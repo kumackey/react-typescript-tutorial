@@ -1,43 +1,31 @@
-import React, {useState, FC} from "react";
-import logo from './logo.svg';
+import {Footer, FooterInfo} from './Footer';
+import {LikeButton} from './LikeButton';
+import {Gallery} from "./Gallery";
 import './App.css';
+import React from "react";
+import {PackingList} from "./PackingList";
 
-function App() {
+const footerInfo: FooterInfo = {
+    copyrightOwner: 'Fumio Nonaka',
+    styles: {
+        backgroundColor: 'paleturquoise',
+        fontFamily: 'Helvetica Neue',
+        lineHeight: '2rem'
+    }
+};
+
+function App(): React.JSX.Element {
+    const getYear = () => new Date().getFullYear();
     return (
         <div className="App">
-            <header className="App-header">
-                <LikeButton/>
-            </header>
+            <LikeButton/>
             <Gallery/>
+            <PackingList/>
+            <Footer footerInfo={footerInfo}>
+                Copyright &#169;2000-{getYear()} {footerInfo.copyrightOwner}
+            </Footer>
         </div>
     );
 }
-
-function LikeButton() {
-    const [count, setCount] = useState(0);
-    const handleClick = () => {
-        setCount(count + 1);
-    };
-    return (
-        <span className="likeButton" onClick={handleClick}>
-      ♥ {count}
-    </span>
-    );
-}
-
-export const Gallery: FC = () => {
-    return (
-        <section>
-            <h1>Amazing scientists</h1>
-            <Profile/>
-        </section>
-    );
-};
-
-export const Profile: FC = () => {
-    const photo = 'https://i.imgur.com/MK3eW3As.jpg';
-    const description = 'Katherine Johnson';
-    return <img src={photo} alt={description}/>;
-};
 
 export default App;
