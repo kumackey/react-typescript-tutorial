@@ -8,6 +8,7 @@ import TeaGathering from "./TeaGathering";
 import Toolbar from "./ToolBar";
 import CallButtons from "./CallButtons";
 import Gallery from "./Gallery";
+import MessageForm from "./MessageForm";
 
 const footerInfo: FooterInfo = {
     copyrightOwner: 'Fumio Nonaka',
@@ -23,6 +24,7 @@ function App(): React.JSX.Element {
     return (
         <div className="App">
             <List/>
+            <MessageForm/>
             <Gallery/>
             <Toolbar/>
             <CallButtons/>

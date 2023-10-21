@@ -2,8 +2,13 @@ import {MouseEventHandler, useState} from 'react';
 
 export default function Gallery() {
     const [index, setIndex] = useState(0);
+    const [showMore, setShowMore] = useState(false);
     const handleClick: MouseEventHandler = () => {
-        setIndex(index + 1);
+        setIndex((index + 1) % sculptureList.length);
+        setShowMore(false);
+    };
+    const handleMoreClick: MouseEventHandler = () => {
+        setShowMore(!showMore);
     };
     const {name, artist, description, url, alt} = sculptureList[index];
     return (
@@ -16,8 +21,11 @@ export default function Gallery() {
             <h3>
                 ({index + 1} of {sculptureList.length})
             </h3>
+            <button onClick={handleMoreClick}>
+                {showMore ? 'Hide' : 'Show'} details
+            </button>
+            {showMore && <p>{description}</p>}
             <img src={url} alt={alt}/>
-            <p>{description}</p>
         </>
     );
 }
