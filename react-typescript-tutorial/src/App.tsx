@@ -6,6 +6,8 @@ import {PackingList} from "./PackingList";
 import List from './List'
 import TeaGathering from "./TeaGathering";
 import Toolbar from "./ToolBar";
+import CallButtons from "./CallButtons";
+import Gallery from "./Gallery";
 
 const footerInfo: FooterInfo = {
     copyrightOwner: 'Fumio Nonaka',
@@ -21,10 +23,11 @@ function App(): React.JSX.Element {
     return (
         <div className="App">
             <List/>
+            <Gallery/>
             <Toolbar/>
-            <br/>
-            <LikeButton/>
+            <CallButtons/>
             <PackingList/>
+            <LikeButton/>
             <TeaGathering/>
             <Footer footerInfo={footerInfo}>
                 Copyright &#169;2000-{getYear()} {footerInfo.copyrightOwner}
